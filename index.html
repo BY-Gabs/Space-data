@@ -1,0 +1,45 @@
+<html>
+
+<head>
+</head>
+
+<body>
+	<h2 id="error"></h2>
+	<script>
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+
+	
+	var x = getUrlParameter('name');
+
+  if (typeof x === "undefined") {
+		document.getElementById("error").innerHTML = "Selecione um nome"
+  } else {
+	  	if(x !="" && x != true)
+	  	{
+			console.log(x)
+			window.location.replace("https://pt.wikipedia.org/wiki/"+x);
+	  	}
+	  	else
+	  	{
+			document.getElementById("error").innerHTML = "Selecione o nome"
+	  	}
+  }
+
+
+
+	</script>
+</body>
+</html>
